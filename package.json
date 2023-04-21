@@ -4,7 +4,8 @@
   "description": "Fundamentos do DDD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/Iann-rst/04-fundamentos-do-ddd#readme",
   "devDependencies": {
     "@types/node": "^18.15.13",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.30.1"
   }
 }
