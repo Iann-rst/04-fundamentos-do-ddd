@@ -1,0 +1,23 @@
+{
+  "name": "04-fundamentos-do-ddd",
+  "version": "1.0.0",
+  "description": "Fundamentos do DDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iann-rst/04-fundamentos-do-ddd.git"
+  },
+  "author": "Iann Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iann-rst/04-fundamentos-do-ddd/issues"
+  },
+  "homepage": "https://github.com/Iann-rst/04-fundamentos-do-ddd#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "typescript": "^5.0.4"
+  }
+}
