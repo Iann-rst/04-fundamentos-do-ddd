@@ -1,7 +1,7 @@
 /**
  * Fazer com que algumas propriedades sejam opcionais
  * Make some property optional on type
- * 
+ *
  * @example
  * ```typescript
  * type Post{
@@ -9,7 +9,7 @@
  *  name: string;
  *  email: string
  * }
- * 
+ *
  * Optional<Post, 'id' | 'email'>
  * ```
  */
