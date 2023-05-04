@@ -28,4 +28,8 @@ Design dirigido à domínio
 - Entidades;
 - Casos de uso;
 
-## Fórum com DDD & Clean Architecture
+# Fórum com DDD & Clean Architecture
+
+Desacoplamento entre as camadas;
+
+- [The Clean Code Blog - Clean Architecture, Author: Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
