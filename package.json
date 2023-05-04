@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Iann-rst/04-fundamentos-do-ddd#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "^18.15.13",
     "eslint": "^8.39.0",
