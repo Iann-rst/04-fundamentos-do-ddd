@@ -33,3 +33,11 @@ Design dirigido à domínio
 Desacoplamento entre as camadas;
 
 - [The Clean Code Blog - Clean Architecture, Author: Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+# Aggregates & Watched Lists
+
+## Conceitos
+
+- Aggregate: Conjunto de entidades que são manipuladas ao mesmo tempo e elas juntas compõem algo maior (agregado). Ajudam a organizar e manter a consistência de objetos relacionados;
+
+- Watched Lists: Lista observável - Classe (Pattern) que permite ter mais informações de itens contido em um lista (itens novo, editados ou removidos). São listas de objetos que são monitorados conforme ocorrem alterações nos objetos agregados;
