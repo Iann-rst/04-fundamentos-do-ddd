@@ -41,3 +41,30 @@ Desacoplamento entre as camadas;
 - Aggregate: Conjunto de entidades que são manipuladas ao mesmo tempo e elas juntas compõem algo maior (agregado). Ajudam a organizar e manter a consistência de objetos relacionados;
 
 - Watched Lists: Lista observável - Classe (Pattern) que permite ter mais informações de itens contido em um lista (itens novo, editados ou removidos). São listas de objetos que são monitorados conforme ocorrem alterações nos objetos agregados;
+
+# Subdomínios & Domain Events
+
+- Core: O que dá dinheiro
+- Supporting: Dá suporte para o core funcionar
+- Generic: Você precisa, mas não são tão importantes
+
+## Exemplos de Subdomínios
+
+- Baseados em um sistema de E-Commerce
+
+### Core
+
+- Compra
+- Catálogo
+- Pagamento
+- Entrega
+
+### Supporting
+
+- Estoque
+
+### Generic
+
+- Notificação ao cliente
+- Promoções
+- Chat
