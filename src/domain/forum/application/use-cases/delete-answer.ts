@@ -5,7 +5,7 @@ import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface DeleteAnswerUseCaseRequest {
   authorId: string
-  questionId: string
+  answerId: string
 }
 
 type DeleteAnswerUseCaseResponse = Either<
@@ -17,10 +17,10 @@ export class DeleteAnswerUseCase {
   constructor(private answerRepository: AnswersRepository) {}
 
   async execute({
-    questionId,
+    answerId,
     authorId,
   }: DeleteAnswerUseCaseRequest): Promise<DeleteAnswerUseCaseResponse> {
-    const question = await this.answerRepository.findById(questionId)
+    const question = await this.answerRepository.findById(answerId)
 
     if (!question) {
       return left(new ResourceNotFoundError())

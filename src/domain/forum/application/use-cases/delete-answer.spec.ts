@@ -1,50 +1,69 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { makeAnswer } from 'test/factories/make-answer'
+import { makeAnswerAttachment } from 'test/factories/make-answer-attachment'
+import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
 import { DeleteAnswerUseCase } from './delete-answer'
 import { NotAllowedError } from './errors/not-allowed-error'
 
-let inMemoryQuestionsRepository: InMemoryAnswersRepository
+let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
+let inMemoryAnswerRepository: InMemoryAnswersRepository
 let sut: DeleteAnswerUseCase
 
 describe('Delete Answer', () => {
   beforeEach(() => {
-    inMemoryQuestionsRepository = new InMemoryAnswersRepository()
-    sut = new DeleteAnswerUseCase(inMemoryQuestionsRepository)
+    inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
+    inMemoryAnswerRepository = new InMemoryAnswersRepository(
+      inMemoryAnswerAttachmentsRepository,
+    )
+    sut = new DeleteAnswerUseCase(inMemoryAnswerRepository)
   })
 
   // sut = system under test
 
   it('should be able to delete a answer', async () => {
-    const newQuestion = makeAnswer(
+    const newAnswer = makeAnswer(
       {
         authorId: new UniqueEntityId('author-1'),
       },
-      new UniqueEntityId('question-1'),
+      new UniqueEntityId('answer-1'),
     )
 
-    await inMemoryQuestionsRepository.create(newQuestion)
+    await inMemoryAnswerRepository.create(newAnswer)
+
+    inMemoryAnswerAttachmentsRepository.items.push(
+      makeAnswerAttachment({
+        answerId: newAnswer.id,
+        attachmentId: new UniqueEntityId('1'),
+      }),
+      makeAnswerAttachment({
+        answerId: newAnswer.id,
+        attachmentId: new UniqueEntityId('2'),
+      }),
+    )
 
     await sut.execute({
-      questionId: 'question-1',
+      answerId: 'answer-1',
       authorId: 'author-1',
     })
 
-    expect(inMemoryQuestionsRepository.items).toHaveLength(0)
+    expect(inMemoryAnswerRepository.items).toHaveLength(0)
+    expect(inMemoryAnswerAttachmentsRepository.items).toHaveLength(0)
   })
 
   it('should not be able to delete a answer from another user', async () => {
-    const newQuestion = makeAnswer(
+    const newAnswer = makeAnswer(
       {
         authorId: new UniqueEntityId('author-1'),
       },
       new UniqueEntityId('question-1'),
     )
 
-    await inMemoryQuestionsRepository.create(newQuestion)
+    await inMemoryAnswerRepository.create(newAnswer)
 
     const result = await sut.execute({
-      questionId: 'question-1',
+      answerId: 'question-1',
       authorId: 'author-2',
     })
 
