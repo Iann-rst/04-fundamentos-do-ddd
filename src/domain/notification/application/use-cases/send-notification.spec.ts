@@ -1,14 +1,13 @@
-import { InMemorySendNotificationRepository } from 'test/repositories/in-memory-send-notification-repository'
+import { InMemoryNotificationRepository } from 'test/repositories/in-memory-notification-repository'
 import { SendNotificationUseCase } from './send-notification'
 
-let inMemorySendNotificationRepository: InMemorySendNotificationRepository
+let inMemoryNotificationRepository: InMemoryNotificationRepository
 let sut: SendNotificationUseCase
 
 describe('Send Notification', () => {
   beforeEach(() => {
-    inMemorySendNotificationRepository =
-      new InMemorySendNotificationRepository()
-    sut = new SendNotificationUseCase(inMemorySendNotificationRepository)
+    inMemoryNotificationRepository = new InMemoryNotificationRepository()
+    sut = new SendNotificationUseCase(inMemoryNotificationRepository)
   })
 
   it('Should be able to create a notification', async () => {
@@ -19,7 +18,7 @@ describe('Send Notification', () => {
     })
 
     expect(notification.isRight()).toBe(true)
-    expect(inMemorySendNotificationRepository.items[0]).toEqual(
+    expect(inMemoryNotificationRepository.items[0]).toEqual(
       notification.value?.notification,
     )
   })
