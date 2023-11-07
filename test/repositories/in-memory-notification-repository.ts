@@ -8,11 +8,22 @@ export class InMemoryNotificationRepository implements NotificationsRepository {
     this.items.push(notification)
   }
 
-  findById(id: string): Promise<Notification | null> {
-    throw new Error('Method not implemented.')
+  async findById(id: string): Promise<Notification | null> {
+    const notification = this.items.find(
+      (notification) => notification.id.toString() === id,
+    )
+
+    if (!notification) {
+      return null
+    }
+    return notification
   }
 
-  save(notification: Notification): Promise<void> {
-    throw new Error('Method not implemented.')
+  async save(notification: Notification): Promise<void> {
+    const itemIndex = this.items.findIndex(
+      (item) => item.id === notification.id,
+    )
+
+    this.items[itemIndex] = notification
   }
 }
